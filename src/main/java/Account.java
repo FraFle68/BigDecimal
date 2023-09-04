@@ -4,7 +4,21 @@ import java.util.Objects;
 public class Account {
     private String accountNumber;
     private BigDecimal balance;
-    private Client client;
+    private Client[] client;
+
+    public Account(String accountNumber, BigDecimal balance, Client[] client) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.client = client;
+    }
+
+    public void depositMoney(BigDecimal amount) {
+        setBalance(getBalance().add(amount));
+    }
+
+    public void withdrawMoney(BigDecimal amount) {
+        setBalance(getBalance().subtract(amount));
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -22,11 +36,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public Client getClient() {
+    public Client[] getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(Client[] client) {
         this.client = client;
     }
 
